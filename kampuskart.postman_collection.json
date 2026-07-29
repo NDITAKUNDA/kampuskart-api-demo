@@ -1,0 +1,114 @@
+{
+  "info": {
+    "name": "KampusKart API",
+    "description": "Products API for KampusKart, an online marketplace for the University of Zimbabwe.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "List all products",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""]
+        }
+      }
+    },
+    {
+      "name": "Search products by keyword",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/?search=laptop",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""],
+          "query": [{ "key": "search", "value": "laptop" }]
+        }
+      }
+    },
+    {
+      "name": "Filter by category",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/?category=Electronics",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""],
+          "query": [{ "key": "category", "value": "Electronics" }]
+        }
+      }
+    },
+    {
+      "name": "Filter by condition",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/?condition=New",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""],
+          "query": [{ "key": "condition", "value": "New" }]
+        }
+      }
+    },
+    {
+      "name": "Order by price ascending",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/?ordering=price",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""],
+          "query": [{ "key": "ordering", "value": "price" }]
+        }
+      }
+    },
+    {
+      "name": "Order by price descending",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/?ordering=-price",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""],
+          "query": [{ "key": "ordering", "value": "-price" }]
+        }
+      }
+    },
+    {
+      "name": "Combined search, filter, ordering and pagination",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/?category=Electronics&search=laptop&ordering=-price&page=1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", ""],
+          "query": [
+            { "key": "category", "value": "Electronics" },
+            { "key": "search", "value": "laptop" },
+            { "key": "ordering", "value": "-price" },
+            { "key": "page", "value": "1" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Unknown route (404 error format)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/products/does-not-exist/",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", "does-not-exist", ""]
+        }
+      }
+    }
+  ]
+}
